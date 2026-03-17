@@ -452,6 +452,7 @@
                         <li class="nav-item"><a class="nav-link" href="#process">Stays</a></li>
                         <li class="nav-item"><a class="nav-link" href="#restaurant">Restaurants</a></li>
                         <li class="nav-item"><a class="nav-link" href="#services">Experience</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#booking">Booking</a></li>
                         <!-- <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li> -->
                     </ul>
                 </div>
@@ -779,9 +780,11 @@
                 inset: 0;
                 z-index: 3;
                 display: flex !important;
-                align-items: center;
-                padding-top: 180px;
-                min-height: unset !important;
+                align-items: flex-start !important;
+                /* was center */
+                padding-top: 260px !important;
+                /* push down */
+                padding-bottom: 0 !important;
                 width: 100% !important;
                 justify-content: flex-start !important;
             }
@@ -854,6 +857,16 @@
             .hero-btn-outline:hover {
                 border-color: #fff;
                 color: #fff;
+            }
+
+            @media (max-width: 1199px) {
+                .hero-info-card.horizontal {
+                    display: none;
+                }
+
+                .divider {
+                    height: 60px;
+                }
             }
 
             /* Stats card */
@@ -1022,7 +1035,8 @@
             @media (max-width: 991px) {
 
                 .hero-stats-card,
-                .hero-info-card {
+                .hero-info-card,
+                .hero-info-card.horizontal {
                     display: none;
                 }
 
@@ -1035,7 +1049,28 @@
                 }
 
                 .hero-content {
-                    padding-top: 120px;
+                    padding-top: 140px;
+                    padding-bottom: 0;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+
+                section.hero-section .hero-content {
+                    padding-top: 140px !important;
+                    padding-bottom: 0 !important;
+                    padding-left: 20px !important;
+                    padding-right: 20px !important;
+                }
+
+                .hero-actions {
+                    flex-direction: column;
+                    align-items: flex-start;
+                }
+
+                .hero-actions .btn {
+                    width: 220px;
+                    text-align: center;
+                    justify-content: center;
                 }
             }
 
@@ -1252,6 +1287,20 @@
 
             .accordion-container:has(.accordion-item:hover) .accordion-item:hover {
                 flex: 2.2;
+            }
+
+            @media (max-width: 991px) {
+                .accordion-container {
+                    flex-direction: column;
+                    height: auto;
+                }
+
+                .accordion-item,
+                .accordion-container:has(.accordion-item:hover) .accordion-item,
+                .accordion-container:has(.accordion-item:hover) .accordion-item:hover {
+                    flex: none;
+                    min-height: 280px;
+                }
             }
 
             /* Inner layout */
@@ -1727,6 +1776,22 @@
             }
 
             @media (max-width: 767px) {
+                .why-image-wrapper {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+                }
+
+                .why-video {
+                    min-height: 320px;
+                }
+
+                .google-review-float {
+                    position: static;
+                    width: 100%;
+                    margin-top: 12px;
+                }
+
                 .why-icon-box {
                     width: 56px;
                     height: 56px;
@@ -2617,6 +2682,19 @@
                 background: rgba(44, 95, 26, 0.35);
                 animation: ripple-play 1.8s ease-out infinite;
                 z-index: -1;
+            }
+
+            @media (max-width: 768px) {
+                .custom-border-3 {
+                    position: relative !important;
+                    width: 100% !important;
+                    max-width: 420px;
+                    margin: 16px auto 0;
+                }
+
+                .custom-border-3 > div {
+                    height: 220px !important;
+                }
             }
         </style>
 
@@ -3760,14 +3838,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="footer-copyright-row d-flex flex-xl-row flex-column gap-3 justify-content-center py-4">
-                    <span class="text-xl-center text-center fs-6 font-2" style="color: var(--accent-color);">
-                        Copyright &copy; 2024 Ambady Estate Munnar. All Rights Reserved.
-                    </span>
+                <div class="text-center mt-4 footer-links py-3 accent-color">
+                    <p class="mb-0">
+                        &copy; <span id="currentYear"></span> <strong>Ambady Estate</strong>. All rights reserved.
+                    </p>
+                    <small>
+                        Designed by <a href="https://vynzora.com/" target="_blank"
+                            style="color: var(--accent-color); text-decoration: none;">Vynzora</a>
+                    </small>
                 </div>
             </div>
         </div>
     </footer>
+
 
     <script src="js/vendor/bootstrap.bundle.min.js"></script>
     <script src="js/vendor/swiper-bundle.min.js"></script>
@@ -3777,7 +3860,9 @@
     <script src="js/vendor/isotope.pkgd.min.js"></script>
     <script src="js/video_embedded.js"></script>
     <script src="js/vendor/fslightbox.js"></script>
-
+    <script>
+        document.getElementById("currentYear").textContent = new Date().getFullYear();
+    </script>
 
     <span id="PING_IFRAME_FORM_DETECTION" style="display: none;"></span>
 </body>

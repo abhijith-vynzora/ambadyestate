@@ -405,6 +405,7 @@ a {
     align-items: center;
     column-gap: 28px;
     width: 100%;
+    padding-inline: clamp(16px, 3vw, 48px);
 }
 
 .site-navbar .navbar-brand {
@@ -1420,6 +1421,12 @@ a {
         align-items: flex-start !important;
         gap: 0;
         width: 100%;
+    }
+
+    .site-navbar .navbar-toggler {
+        margin-left: auto;
+        margin-right: 4px;
+        padding-right: 0.25rem;
     }
 
     .site-navbar .nav-link {
